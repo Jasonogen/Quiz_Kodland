@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+</head>
+<body>
+    <div style="text-align: right;">Best Score: {{ best_score }}%</div>
+    <h1>Quiz</h1>
+    <form method="post" action="{{ url_for('submit_quiz') }}">
+        <div>
+            <label for="name">Question 1: What is your name?</label><br>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div>
+            <p>Question 2: What is your favorite color?</p>
+            {% for option in color_options %}
+                <input type="radio" id="{{ option }}" name="color" value="{{ option }}" required>
+                <label for="{{ option }}">{{ option }}</label><br>
+            {% endfor %}
+        </div>
+        <div>
+            <p>Question 3: What is your favorite animal?</p>
+            {% for option in animal_options %}
+                <input type="radio" id="{{ option }}" name="animal" value="{{ option }}" required>
+                <label for="{{ option }}">{{ option }}</label><br>
+            {% endfor %}
+        </div>
+        <div>
+            <label for="hobbies">Question 4: Describe your hobbies or interests:</label><br>
+            <textarea id="hobbies" name="hobbies" rows="4" cols="50" required></textarea>
+        </div>
+        <div>
+            <input type="submit" value="Submit Answers">
+        </div>
+    </form>
+    <footer>
+        <p>Developed by Your Name</p>
+    </footer>
+</body>
+</html>
